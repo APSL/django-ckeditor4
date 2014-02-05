@@ -9,13 +9,13 @@ fields.
 Setup
 -----
 
-Install the package with [pip][] and [Mercurial][]:
+Install the package with [pip][] and [Git][]:
 
-    pip install -e hg+http://bitbucket.org/Miketsukami/django-ckeditor4#egg=django-ckeditor4
+    pip install -e git://github.com/APSL/django-ckeditor4.git#egg=django-ckeditor4
 
 
 [pip]: http://pip.openplans.org/
-[Mercurial]: http://hg-scm.org/
+[Git]: http://git-scm.com/
 
 Add `ckeditor` to your `INSTALLED_APPS`.
 
@@ -58,12 +58,12 @@ To use CKEditor for a particular field in a form, set its widget to an
 instance of `ckeditor.widgets.CKEditor` like this:
 
     from ckeditor.widgets import CKEditor
-    
+
     class SampleForm(forms.Form):
         body = forms.CharField(
             widget=CKEditor()
         )
-    
+
 
 As a shortcut you can use a `ckeditor.fields.HTMLField` instead of
 `django.db.models.TextField` in a model to automatically use the CKEditor
@@ -71,11 +71,11 @@ widget, like so:
 
     from django.db import models
     from ckeditor.fields import HTMLField
-    
+
     class Sample(models.Model):
         # This will use a normal <textarea> when rendered in a (Model)Form
         plain_body = models.TextField(blank=True, verbose_name='plain version')
-        
+
         # This will use CKEditor when rendered in a (Model)Form
         html_body = HTMLField(blank=True, verbose_name='HTML version')
 
@@ -104,7 +104,7 @@ like this:
             'height': 300,
             'toolbarCanCollapse': False,
         },
-        
+
         'simple_toolbar': {
             'toolbar': [
                 [ 'Bold', 'Italic', 'Underline' ],
@@ -119,17 +119,17 @@ When setting up the `CKEditor` widget in your `Form` class you can pass a
 
     class BlogPostForm(forms.Form):
         title = forms.CharField()
-        
+
         # This field will render as a CKEditor with the 'simple_toolbar' config.
         subtitle = forms.CharField(
             widget=CKEditor(ckeditor_config='simple_toolbar')
         )
-        
+
         # This field will render as a CKEditor with the 'default' config.
         body = forms.CharField(
             widget=CKEditor()
         )
-    
+
 
 You cannot use the `HTMLField` shortcut if you want to specify a custom config
 -- you *must* create a form.

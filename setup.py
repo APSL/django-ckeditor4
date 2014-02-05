@@ -23,8 +23,8 @@ setup(
     install_requires=install_requires,
     description=description,
     long_description=long_description,
-    author='Miketsukami',
-    author_email='a.o.suhanov@gmail.com',
-    url='http://bitbucket.org/Miketsukami/django-ckeditor4/',
+    author='Daniel Sastre',
+    author_email='dsastre@apsl.net',
+    url='https://github.com/APSL/django-ckeditor4',
     packages=['ckeditor'],
 )
